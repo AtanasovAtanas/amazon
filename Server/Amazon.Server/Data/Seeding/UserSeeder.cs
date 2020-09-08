@@ -18,12 +18,12 @@
                 new User
                 {
                     Email = "a.atanasov@gmail.com",
-                    UserName = "AtanasAtanasov",
+                    UserName = "a.atanasov@gmail.com",
                 },
                 new User
                 {
                     Email = "a.sarambelieva@gmail.com",
-                    UserName = "AnnaSarambelieva",
+                    UserName = "a.sarambelieva@gmail.com",
                 },
             };
 

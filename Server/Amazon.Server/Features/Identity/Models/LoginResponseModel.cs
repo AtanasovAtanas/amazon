@@ -1,11 +1,14 @@
 ﻿namespace Amazon.Server.Features.Identity.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LoginResponseModel
     {
         public string Token { get; set; }
 
         public string UserId { get; set; }
 
-        public string Username { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
     }
 }

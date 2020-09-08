@@ -34,7 +34,7 @@
             var user = new User
             {
                 Email = model.Email,
-                UserName = model.UserName,
+                UserName = model.Email,
             };
 
             var result = await this.userManager.CreateAsync(user, model.Password);
@@ -46,7 +46,7 @@
             var loginRequestModel = new LoginRequestModel
             {
                 Password = model.Password,
-                UserName = model.UserName,
+                Email = model.Email,
             };
 
             return await this.Login(loginRequestModel);
@@ -57,7 +57,7 @@
         [Route(nameof(Login))]
         public async Task<ActionResult<LoginResponseModel>> Login(LoginRequestModel model)
         {
-            var user = await this.userManager.FindByNameAsync(model.UserName);
+            var user = await this.userManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 return this.Unauthorized();
@@ -77,7 +77,7 @@
             return new LoginResponseModel
             {
                 UserId = user.Id,
-                Username = user.UserName,
+                Email = user.Email,
                 Token = token,
             };
         }
@@ -92,7 +92,7 @@
             return new LoginResponseModel
             {
                 UserId = userId,
-                Username = username,
+                Email = username,
                 Token = this.identity.GenerateJwtToken(userId, username, this.appSettings.Secret),
             };
         }
