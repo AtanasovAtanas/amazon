@@ -1,7 +1,8 @@
 import React from "react";
+import { GlobalProvider } from "./context/context";
 
-function App({ children }) {
-	return <div>{children}</div>;
-}
+const App = ({ children }) => {
+	return <GlobalProvider>{children}</GlobalProvider>;
+};
 
 export default App;

@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from "react";
 import identityService from "../../../services/identity";
 import styles from "./AuthForm.module.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+import { useGlobalContext } from "../../../context/context";
 
 const AuthForm = ({ title, description, buttonText, fields }) => {
 	const [model, setModel] = useState({});
-
 	const { pathname } = useLocation();
+	const { login } = useGlobalContext();
+	const history = useHistory();
 
 	const onChangeHandler = (event) => {
 		const key = event.target.name.replace(" ", "").toLowerCase();
@@ -23,8 +25,14 @@ const AuthForm = ({ title, description, buttonText, fields }) => {
 		await identityService.authenticate(
 			type,
 			model,
-			(response) => console.log(response),
-			() => console.log("authentication has failed")
+			(response) => {
+				login(
+					{ email: response.email, userId: response.userId },
+					response.token
+				);
+				history.push("/");
+			},
+			(error) => console.log(error || "authentication has failed")
 		);
 	};
 
