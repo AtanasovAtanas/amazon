@@ -10,7 +10,7 @@ const Navbar = () => {
 	return (
 		<nav className={styles.header}>
 			<Link to="/">
-				<img src="logo.png" className={styles.logo} />
+				<img src="logo.png" className={styles.logo} alt="logo" />
 			</Link>
 
 			<div className={searchStyles}>
