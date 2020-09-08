@@ -1,5 +1,6 @@
 import crud from "./crud";
 import { IdentityRoutes } from "./routes";
+import getCurrentBearerToken from "./cookie-helper";
 
 const authenticate = async (type, body, onSuccess, onFailure) => {
 	if (type === "LOGIN") {
@@ -40,30 +41,27 @@ const register = async (body, onSuccess, onFailure) => {
 	);
 };
 
-// const getIdentityDetails = async (onSuccess, onFailure) => {
-// 	const cookieParts = document.cookie.split("=");
-// 	const cookieHeader = cookieParts[0];
-// 	const cookieValue = cookieParts[1];
+const getIdentityDetails = async (onSuccess, onFailure) => {
+	const token = getCurrentBearerToken();
+	console.log(token);
+	if (!token) {
+		return;
+	}
 
-// 	if (cookieParts.length !== 2 || cookieHeader !== "Bearer" || !cookieValue) {
-// 		onFailure();
-// 		return;
-// 	}
-
-// 	await crud.get(
-// 		IdentityRoutes.GET_IDENTITY_DETAILS,
-// 		{
-// 			"Content-Type": "application/json",
-// 			Authorization: `Bearer ${cookieValue}`,
-// 		},
-// 		onSuccess,
-// 		onFailure
-// 	);
-// };
+	await crud.get(
+		IdentityRoutes.GET_IDENTITY_DETAILS,
+		{
+			"Content-Type": "application/json",
+			Authorization: token,
+		},
+		onSuccess,
+		onFailure
+	);
+};
 
 const identityService = {
 	authenticate,
-	// getIdentityDetails,
+	getIdentityDetails,
 };
 
 export default identityService;
