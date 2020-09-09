@@ -1,5 +1,6 @@
 ﻿namespace Amazon.Server.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +10,11 @@
 
     public class Product : BaseDeletableModel<int>
     {
+        public Product()
+        {
+            this.Pictures = new HashSet<Picture>();
+        }
+
         [Required]
         [MinLength(TitleMinLength, ErrorMessage = TitleMinLengthErrorMessage)]
         [MaxLength(TitleMaxLength, ErrorMessage = TitleMaxLengthErrorMessage)]
@@ -30,5 +36,7 @@
         public string SellerId { get; set; }
 
         public virtual User Seller { get; set; }
+
+        public virtual IEnumerable<Picture> Pictures { get; set; }
     }
 }

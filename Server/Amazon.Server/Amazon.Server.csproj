@@ -16,6 +16,8 @@
 	  <Compile Remove="Data\Migrations\20200909063005_AddCategoriesAndProductsTables.Designer.cs" />
 	  <Compile Remove="Data\Migrations\20200909063120_AddCategoriesAndProductsTables.cs" />
 	  <Compile Remove="Data\Migrations\20200909063120_AddCategoriesAndProductsTables.Designer.cs" />
+	  <Compile Remove="Data\Migrations\20200909132553_AddPicturesTable.cs" />
+	  <Compile Remove="Data\Migrations\20200909132553_AddPicturesTable.Designer.cs" />
 	</ItemGroup>
 	<ItemGroup>
         <AdditionalFiles Include="..\stylecop.json" />

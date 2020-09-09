@@ -23,6 +23,8 @@
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Picture> Pictures { get; set; }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             this.ApplyAuditInformation();

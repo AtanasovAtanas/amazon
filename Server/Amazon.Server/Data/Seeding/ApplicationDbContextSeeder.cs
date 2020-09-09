@@ -22,6 +22,7 @@
             {
                 new UserSeeder(),
                 new CategorySeeder(),
+                new ProductSeeder(),
             };
 
             foreach (var seeder in seeders)
