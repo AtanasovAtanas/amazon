@@ -8,6 +8,7 @@
     using Amazon.Server.Data.Repositories.Contracts;
     using Amazon.Server.Features.Categories;
     using Amazon.Server.Features.Identity;
+    using Amazon.Server.Features.Products;
     using Amazon.Server.Infrastructure.Filters;
     using Amazon.Server.Infrastructure.Services;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -91,7 +92,8 @@
                     typeof(EfRepository<>))
                 .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<IIdentityService, IdentityService>()
-                .AddTransient<ICategoriesService, CategoriesService>();
+                .AddTransient<ICategoriesService, CategoriesService>()
+                .AddTransient<IProductsService, ProductsService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>

@@ -11,5 +11,10 @@
         {
             public const string GetAll = "All";
         }
+
+        public class Product
+        {
+            public const string GetProductsByCategory = "/{categoryName}/Products";
+        }
     }
 }
