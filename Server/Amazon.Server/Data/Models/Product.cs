@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Amazon.Server.Data.Models
+﻿namespace Amazon.Server.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Amazon.Server.Data.Models.Base;
 

@@ -6,5 +6,10 @@
         {
             public const string Id = "{id}";
         }
+
+        public class Category
+        {
+            public const string GetAll = "All";
+        }
     }
 }

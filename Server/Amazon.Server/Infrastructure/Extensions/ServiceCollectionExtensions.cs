@@ -6,6 +6,7 @@
     using Amazon.Server.Data.Models;
     using Amazon.Server.Data.Repositories;
     using Amazon.Server.Data.Repositories.Contracts;
+    using Amazon.Server.Features.Categories;
     using Amazon.Server.Features.Identity;
     using Amazon.Server.Infrastructure.Filters;
     using Amazon.Server.Infrastructure.Services;
@@ -89,7 +90,8 @@
                     typeof(IRepository<>),
                     typeof(EfRepository<>))
                 .AddScoped<ICurrentUserService, CurrentUserService>()
-                .AddTransient<IIdentityService, IdentityService>();
+                .AddTransient<IIdentityService, IdentityService>()
+                .AddTransient<ICategoriesService, CategoriesService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>
