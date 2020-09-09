@@ -22,6 +22,11 @@ export const GlobalReducer = (state, action) => {
 				},
 				isLoggedIn: false,
 			};
+		case DispatchTypes.FETCH_CATEGORIES:
+			return {
+				...state,
+				categories: action.payload,
+			};
 		default:
 			return state;
 	}

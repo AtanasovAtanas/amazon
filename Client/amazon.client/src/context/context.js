@@ -5,6 +5,7 @@ import * as DispatchTypes from "./constants";
 const initialState = {
 	user: { userId: "", email: "" },
 	isLoggedIn: false,
+	categories: [],
 };
 
 export const GlobalContext = createContext(initialState);
@@ -27,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
 	};
 
 	return (
-		<GlobalContext.Provider value={{ ...state, login, logout }}>
+		<GlobalContext.Provider value={{ ...state, login, logout, dispatch }}>
 			{children}
 		</GlobalContext.Provider>
 	);

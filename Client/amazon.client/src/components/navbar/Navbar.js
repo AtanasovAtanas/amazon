@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Navbar.module.css";
+import Select from "../select/Select";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import SearchIcon from "@material-ui/icons/Search";
@@ -10,6 +11,7 @@ import HistoryIcon from "@material-ui/icons/History";
 
 const Navbar = () => {
 	const { isLoggedIn, logout } = useGlobalContext();
+	const { categories } = useGlobalContext();
 
 	return (
 		<nav className={styles.header}>
@@ -18,6 +20,7 @@ const Navbar = () => {
 			</Link>
 
 			<div className={styles.search}>
+				<Select options={categories.map((category) => category.name)} />
 				<input type="text" className={styles["search-input"]} />
 				<SearchIcon className={styles["search-icon"]} />
 			</div>

@@ -5,19 +5,34 @@ import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import { useGlobalContext } from "./context/context";
 import identityService from "./services/identity";
+import categoriesService from "./services/category";
+import * as DispatchTypes from "./context/constants";
 
 const Navigator = () => {
-	const { login } = useGlobalContext();
+	const { login, dispatch } = useGlobalContext();
 
 	useEffect(() => {
-		identityService.getIdentityDetails(
-			(response) =>
-				login(
-					{ email: response.email, userId: response.userId },
-					response.token
-				),
-			() => console.log("failure")
-		);
+		const fetchData = async () => {
+			await identityService.getIdentityDetails(
+				(response) =>
+					login(
+						{ email: response.email, userId: response.userId },
+						response.token
+					),
+				() => console.log("failure")
+			);
+
+			await categoriesService.getAll(
+				(response) =>
+					dispatch({
+						type: DispatchTypes.FETCH_CATEGORIES,
+						payload: response,
+					}),
+				() => console.log("fetching categories has failed")
+			);
+		};
+
+		fetchData();
 	}, []);
 
 	return (

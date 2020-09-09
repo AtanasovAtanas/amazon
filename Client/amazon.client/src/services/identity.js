@@ -43,7 +43,6 @@ const register = async (body, onSuccess, onFailure) => {
 
 const getIdentityDetails = async (onSuccess, onFailure) => {
 	const token = getCurrentBearerToken();
-	console.log(token);
 	if (!token) {
 		return;
 	}
