@@ -1,0 +1,33 @@
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 200px;
+	text-align: center;
+	background-color: #fafafa;
+}
+
+.price {
+	color: grey;
+	font-size: 22px;
+}
+
+.card img {
+	max-width: inherit;
+	object-fit: contain;
+}
+
+.card a {
+	display: block;
+	border: none;
+	outline: 0;
+	padding: 12px;
+	color: #000000;
+	background-color: #f0c14b;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.card a:hover {
+	opacity: 0.9;
+}
