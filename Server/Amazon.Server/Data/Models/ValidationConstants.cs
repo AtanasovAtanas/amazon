@@ -24,5 +24,15 @@
             public const string PriceMaxValue = "2147483647";
             public const string PriceErrorMessage = "Price must be a positive number";
         }
+
+        public class Address
+        {
+            public const int CityMinLength = 1;
+            public const int CityMaxLength = 85;
+            public const string ZipCodeRegExPattern = @"(?i)^[a-z0-9][a-z0-9\- ]{0,10}[a-z0-9]$";
+            public const int AddressLineMinLength = 5;
+            public const int PhoneNumberMinLength = 8;
+            public const int PhoneNumberMaxLength = 15;
+        }
     }
 }

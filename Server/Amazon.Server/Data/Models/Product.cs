@@ -13,6 +13,7 @@
         public Product()
         {
             this.Pictures = new HashSet<Picture>();
+            this.Orders = new HashSet<OrderProduct>();
         }
 
         [Required]
@@ -38,5 +39,7 @@
         public virtual User Seller { get; set; }
 
         public virtual IEnumerable<Picture> Pictures { get; set; }
+
+        public virtual IEnumerable<OrderProduct> Orders { get; set; }
     }
 }

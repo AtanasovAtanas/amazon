@@ -4,14 +4,16 @@ using Amazon.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Amazon.Server.Data.Migrations
 {
     [DbContext(typeof(AmazonDbContext))]
-    partial class AmazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200910074439_AddTablesForOrdersFeature")]
+    partial class AddTablesForOrdersFeature
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,13 +29,10 @@ namespace Amazon.Server.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AddressLine")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(85)")
-                        .HasMaxLength(85);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
@@ -45,12 +44,9 @@ namespace Amazon.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -134,7 +130,6 @@ namespace Amazon.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CustomerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("ModifiedOn")
@@ -298,7 +293,7 @@ namespace Amazon.Server.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DeliveryAddressId")
+                    b.Property<int>("DeliveryAddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -509,9 +504,7 @@ namespace Amazon.Server.Data.Migrations
                 {
                     b.HasOne("Amazon.Server.Data.Models.User", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("Amazon.Server.Data.Models.OrderHistory", b =>
@@ -566,7 +559,9 @@ namespace Amazon.Server.Data.Migrations
                 {
                     b.HasOne("Amazon.Server.Data.Models.Address", "DeliveryAddress")
                         .WithMany()
-                        .HasForeignKey("DeliveryAddressId");
+                        .HasForeignKey("DeliveryAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

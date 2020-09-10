@@ -25,6 +25,16 @@
 
         public DbSet<Picture> Pictures { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderProduct> OrdersItems { get; set; }
+
+        public DbSet<OrderHistory> OrdersLogs { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             this.ApplyAuditInformation();
