@@ -1,12 +1,11 @@
-﻿using Amazon.Server.Services.Slug;
-
-namespace Amazon.Server.Features.Products.Models
+﻿namespace Amazon.Server.Features.Products.Models
 {
     using System.Collections.Generic;
     using System.Linq;
 
     using Amazon.Server.Data.Models;
     using Amazon.Server.Infrastructure.Mapping;
+    using Amazon.Server.Services.Slug;
     using AutoMapper;
 
     public class ProductDetailsResponseModel : IMapFrom<Product>, IHaveCustomMappings
