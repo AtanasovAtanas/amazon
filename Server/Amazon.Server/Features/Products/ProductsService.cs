@@ -24,5 +24,12 @@
                 .Where(p => p.Category.Name == categoryName)
                 .To<TModel>()
                 .ToListAsync();
+
+        public async Task<TModel> GetProductById<TModel>(int id)
+            => await this.productsRepository
+                .All()
+                .Where(p => p.Id == id)
+                .To<TModel>()
+                .FirstOrDefaultAsync();
     }
 }
