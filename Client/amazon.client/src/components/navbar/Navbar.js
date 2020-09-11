@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import HistoryIcon from "@material-ui/icons/History";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const Navbar = () => {
 	const { isLoggedIn, logout } = useGlobalContext();
@@ -34,10 +34,10 @@ const Navbar = () => {
 								<span>Profile</span>
 							</div>
 						</Link>
-						<Link to="/purchases">
+						<Link to="/favorites">
 							<div className={styles.links}>
-								<HistoryIcon />
-								<span>Purchases</span>
+								<FavoriteIcon />
+								<span>Favorites</span>
 							</div>
 						</Link>
 						<Link to="/checkout">
