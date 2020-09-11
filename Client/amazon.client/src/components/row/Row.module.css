@@ -1,0 +1,13 @@
+.row {
+	display: table;
+	margin: 0 auto;
+}
+
+.children {
+	display: flex;
+	width: 100%;
+}
+
+.children > div:not(:last-child) {
+	margin-right: 30px;
+}
