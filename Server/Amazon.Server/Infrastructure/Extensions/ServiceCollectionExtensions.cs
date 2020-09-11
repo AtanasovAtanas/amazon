@@ -11,6 +11,7 @@
     using Amazon.Server.Features.Products;
     using Amazon.Server.Infrastructure.Filters;
     using Amazon.Server.Infrastructure.Services;
+    using Amazon.Server.Services.Slug;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -93,7 +94,8 @@
                 .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<ICategoriesService, CategoriesService>()
-                .AddTransient<IProductsService, ProductsService>();
+                .AddTransient<IProductsService, ProductsService>()
+                .AddTransient<ISlugGenerator, SlugGenerator>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>
