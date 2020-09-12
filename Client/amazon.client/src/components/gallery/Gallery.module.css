@@ -1,0 +1,53 @@
+.wrapper {
+	max-width: 500px;
+	display: flex;
+	min-height: 100px;
+	align-items: center;
+}
+
+.slider {
+	width: 440px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: hidden;
+}
+
+.featured {
+	max-width: 500px;
+	object-fit: cover;
+	cursor: pointer;
+	border: 2px solid black;
+}
+
+.picture,
+.active {
+	object-fit: cover;
+	max-width: 100px;
+	cursor: pointer;
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.active {
+	opacity: 1;
+}
+
+.picture {
+	opacity: 0.5;
+}
+
+.picture:hover {
+	opacity: 1;
+}
+
+.arrow {
+	cursor: pointer;
+}
+
+.arrow:hover {
+	opacity: 0.5;
+}
+
+.active {
+	opacity: 1;
+}
