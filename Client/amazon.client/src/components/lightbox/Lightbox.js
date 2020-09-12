@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Lightbox.module.css";
 
-const Lightbox = ({ featured, images, closeHandler }) => {
+const Lightbox = ({ featured, images, alt, closeHandler }) => {
 	const [main, setMain] = useState(featured);
 	const [index, setIndex] = useState(images.indexOf(featured));
 
@@ -26,25 +26,29 @@ const Lightbox = ({ featured, images, closeHandler }) => {
 			</span>
 			<div className={styles["modal-content"]}>
 				<div>
-					<img className={styles["modal-main-image"]} src={main} />
+					<img
+						className={styles["modal-main-image"]}
+						src={main}
+						alt={alt}
+					/>
 				</div>
 
-				<a
+				<span
 					className={`${styles.prev} ${
 						index === 0 ? styles.disabled : ""
 					}`}
 					onClick={goToPrevImage}
 				>
 					&#10094;
-				</a>
-				<a
+				</span>
+				<span
 					className={`${styles.next} ${
 						index === images.length - 1 ? styles.disabled : ""
 					}`}
 					onClick={goToNextImage}
 				>
 					&#10095;
-				</a>
+				</span>
 
 				<div className={styles.row}>
 					{images.map((image, index) => (
@@ -54,7 +58,7 @@ const Lightbox = ({ featured, images, closeHandler }) => {
 									image === main ? styles.active : styles.demo
 								}
 								src={image}
-								alt="Nature"
+								alt={alt}
 								onClick={() => {
 									setIndex(index);
 									setMain(image);

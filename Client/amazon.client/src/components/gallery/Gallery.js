@@ -4,7 +4,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import styles from "./Gallery.module.css";
 import Lightbox from "../lightbox/Lightbox";
 
-const Gallery = ({ images }) => {
+const Gallery = ({ images, alt }) => {
 	const [featured, setFeatured] = useState(images[0]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -27,6 +27,7 @@ const Gallery = ({ images }) => {
 				className={styles.featured}
 				src={featured}
 				onClick={toggleModal}
+				alt={alt}
 			/>
 			<div className={styles.wrapper}>
 				<ChevronLeftIcon
@@ -44,6 +45,7 @@ const Gallery = ({ images }) => {
 									isActive ? styles.active : styles.picture
 								}
 								src={image}
+								alt={alt}
 								onClick={(event) => onClickHandler(event)}
 							/>
 						);
@@ -59,6 +61,7 @@ const Gallery = ({ images }) => {
 				<Lightbox
 					featured={featured}
 					images={images}
+					alt={alt}
 					closeHandler={toggleModal}
 				/>
 			) : null}

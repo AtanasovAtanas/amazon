@@ -7,7 +7,7 @@ const Product = ({ imgSrc, id, slug, title, price }) => {
 
 	return (
 		<div className={styles.card}>
-			<img src={imgSrc} alt="Product image" />
+			<img src={imgSrc} alt={title} />
 			<h3>{title}</h3>
 			<p className={styles.price}>${price.toFixed(2)}</p>
 			<Link to={linkTo}>See product details</Link>
